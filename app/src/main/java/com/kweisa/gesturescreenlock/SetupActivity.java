@@ -19,8 +19,8 @@ public class SetupActivity extends AppCompatActivity {
         DrawingView drawingView = findViewById(R.id.setup_view);
         SecureRandom secureRandom = new SecureRandom();
 
-        start = new Point(secureRandom.nextInt(1080), secureRandom.nextInt(1080));
-        stop = new Point(secureRandom.nextInt(1080), secureRandom.nextInt(1080));
+        start = new Point(secureRandom.nextInt(900), secureRandom.nextInt(900));
+        stop = new Point(secureRandom.nextInt(900), secureRandom.nextInt(900));
 
         Log.i("Start", start.toString());
         Log.i("stop", stop.toString());
