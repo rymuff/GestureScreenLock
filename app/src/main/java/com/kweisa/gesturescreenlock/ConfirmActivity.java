@@ -29,10 +29,10 @@ public class ConfirmActivity extends AppCompatActivity {
             @Override
             void onActionUp(DrawingView drawingView) {
                 if (GestureChecker.check(drawingView.getGesture(), setupGesture)) {
-                    Toast.makeText(getApplicationContext(), "Gestures matched", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Gestures Matched", Toast.LENGTH_SHORT).show();
                     save(setupGesture);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Gestures do not match", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Gestures Do Not Match", Toast.LENGTH_SHORT).show();
                 }
                 finish();
             }

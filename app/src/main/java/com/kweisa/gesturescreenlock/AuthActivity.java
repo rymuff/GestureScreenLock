@@ -30,7 +30,7 @@ public class AuthActivity extends AppCompatActivity {
                 if (GestureChecker.check(gesture, drawingView.getGesture())) {
                     Toast.makeText(getApplicationContext(), "Gesture Matched", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Gesture Do Not Matched", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Gesture Dose Not Match", Toast.LENGTH_SHORT).show();
                 }
                 finish();
             }
