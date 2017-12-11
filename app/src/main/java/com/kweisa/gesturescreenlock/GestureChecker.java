@@ -3,7 +3,7 @@ package com.kweisa.gesturescreenlock;
 
 import java.util.ArrayList;
 
-public class GestureChecker {
+class GestureChecker {
     private static double threshold = 180;
 
     private static ArrayList<Point> normalize(ArrayList<Point> data) {
@@ -65,7 +65,7 @@ public class GestureChecker {
         return normalizedPointList;
     }
 
-    public static boolean check(ArrayList<Point> gesture1, ArrayList<Point> gesture2) {
+    static boolean check(ArrayList<Point> gesture1, ArrayList<Point> gesture2) {
         ArrayList<Point> savedGesture = normalize(gesture1);
         ArrayList<Point> currentGesture = normalize(gesture2);
 

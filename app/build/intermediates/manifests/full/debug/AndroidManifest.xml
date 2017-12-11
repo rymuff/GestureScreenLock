@@ -26,6 +26,7 @@
         </activity>
         <activity android:name="com.kweisa.gesturescreenlock.SetupActivity" />
         <activity android:name="com.kweisa.gesturescreenlock.AuthActivity" />
+        <activity android:name="com.kweisa.gesturescreenlock.ConfirmActivity" />
 
         <meta-data
             android:name="android.support.VERSION"

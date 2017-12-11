@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kweisa.gesturescreenlock.AuthActivity">
+    tools:context="com.kweisa.gesturescreenlock.ConfirmActivity">
     <TextView
         android:id="@+id/tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Draw your gesture"
+        android:text="Draw your gesture again"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -19,8 +19,9 @@
     <com.kweisa.gesturescreenlock.DrawingView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/auth_view"
+        android:id="@+id/confirm_view"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:background="@android:color/transparent"/>
+
 </android.support.constraint.ConstraintLayout>

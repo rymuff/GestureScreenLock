@@ -17,23 +17,25 @@ public class DrawingView extends View {
     private HashSet<Point> pointSet;
     private ArrayList<Point> pointList;
 
-    private Paint drawPaint;
+    private Paint paint;
     private Path path = new Path();
     private boolean touchUp;
     private boolean showLine;
+
+    private OnActionUpListener onActionUpListener = null;
 
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setFocusable(true);
         setFocusableInTouchMode(true);
 
-        drawPaint = new Paint();
-        drawPaint.setAntiAlias(true);
-        drawPaint.setStrokeWidth(15);
-        drawPaint.setStrokeJoin(Paint.Join.ROUND);
-        drawPaint.setStrokeCap(Paint.Cap.ROUND);
-        drawPaint.setColor(Color.BLACK);
-        drawPaint.setStyle(Paint.Style.STROKE);
+        paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setStrokeWidth(15);
+        paint.setStrokeJoin(Paint.Join.ROUND);
+        paint.setStrokeCap(Paint.Cap.ROUND);
+        paint.setColor(Color.BLACK);
+        paint.setStyle(Paint.Style.STROKE);
 
         pointList = new ArrayList<>();
         pointSet = new HashSet<>();
@@ -77,6 +79,8 @@ public class DrawingView extends View {
             case MotionEvent.ACTION_UP:
                 path = new Path();
                 touchUp = true;
+                if (onActionUpListener != null)
+                    onActionUpListener.onActionUp(this);
                 break;
             default:
                 return false;
@@ -89,13 +93,24 @@ public class DrawingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         if (showLine) {
-            drawPaint.setStyle(Paint.Style.STROKE);
-            canvas.drawPath(path, drawPaint);
+            paint.setStyle(Paint.Style.STROKE);
+            canvas.drawPath(path, paint);
         }
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        performClick();
         return onTouch(event);
     }
+
+    @Override
+    public boolean performClick() {
+        return super.performClick();
+    }
+
+    public void setOnActionUpListener(OnActionUpListener onActionUpListener) {
+        this.onActionUpListener = onActionUpListener;
+    }
+
 }

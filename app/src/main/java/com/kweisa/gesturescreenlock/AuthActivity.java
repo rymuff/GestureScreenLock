@@ -2,80 +2,56 @@ package com.kweisa.gesturescreenlock;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class AuthActivity extends AppCompatActivity {
-    private int step;
-    private ArrayList<Point> gesture1, gesture2;
-    private DrawingView gview;
-    private TextView tip;
-    private boolean wait;
+    private ArrayList<Point> gesture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
+        gesture = load();
+        if (gesture == null) {
+            Toast.makeText(getApplicationContext(), "Gesture Not Found", Toast.LENGTH_SHORT).show();
+            finish();
+        }
 
-        step = 1;
-        gview = (DrawingView) findViewById(R.id.setup_view);
-        tip = (TextView) findViewById(R.id.tip);
-
-        wait = false;
-
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+        DrawingView drawingView = findViewById(R.id.auth_view);
+        drawingView.setOnActionUpListener(new OnActionUpListener() {
             @Override
-            public void run() {
-                AuthActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (gview.isTouchUp() && !wait) {
-                            wait = true;
-                            if (step == 1) {
-                                gesture1 = gview.getGesture();
-                                tip.setText("Draw your gesture again");
-                                step++;
-                                gview.reset();
-                                gesture2 = load();
-                                if (GestureChecker.check(gesture1, gesture2)) {
-                                    tip.setText("");
-                                    step = 1;
-                                    Toast.makeText(getApplicationContext(), "Gesture matched!", Toast.LENGTH_SHORT).show();
-                                    finish();
-
-                                } else {
-                                    tip.setText("Draw your gesture");
-                                    step = 1;
-                                    Toast.makeText(getApplicationContext(), "Gestures don't match", Toast.LENGTH_SHORT).show();
-                                }
-                                gview.reset();
-                            }
-                            wait = false;
-                        }
-                    }
-                });
+            void onActionUp(DrawingView drawingView) {
+                if (GestureChecker.check(gesture, drawingView.getGesture())) {
+                    Toast.makeText(getApplicationContext(), "Gesture Matched", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Gesture Do Not Matched", Toast.LENGTH_SHORT).show();
+                }
+                finish();
             }
-        }, 0, 300);
+        });
     }
 
     private ArrayList<Point> load() {
-        ArrayList<Point> gesture;
+        ArrayList<Point> gesture = null;
+
         try {
             FileInputStream fos = getApplicationContext().openFileInput("gesture.key");
             ObjectInputStream os = new ObjectInputStream(fos);
+
+            //noinspection unchecked
             gesture = (ArrayList<Point>) os.readObject();
+
             os.close();
-            return gesture;
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "An error occurred!", Toast.LENGTH_SHORT).show();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
         }
-        return null;
+
+        return gesture;
     }
 }
