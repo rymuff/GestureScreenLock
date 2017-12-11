@@ -1,84 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context="com.kweisa.gesturescreenlock.MainActivity">
 
 
-    <TextView
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SLock Settings"
-        android:id="@+id/title"
-        android:layout_gravity="center_horizontal"
-        android:textSize="30sp"
-        android:layout_marginTop="47dp"
-        android:fontFamily="sans-serif-light"
-        android:background="#00ffffff"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:text="Setup gesture"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Authenticate"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Set gesture"
-        android:id="@+id/set"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:layout_marginTop="34dp"
-        android:textSize="25sp"
-        android:fontFamily="sans-serif-light"
-        android:layout_below="@+id/title"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Disable gesture"
-        android:id="@+id/reset"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:fontFamily="sans-serif-light"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/set"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Lock now"
-        android:id="@+id/lock"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:fontFamily="sans-serif-light"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/reset"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="About"
-        android:id="@+id/about"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:fontFamily="sans-serif-light"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/lock"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Exit"
-        android:id="@+id/exit"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:fontFamily="sans-serif-light"
-        android:layout_marginTop="25sp"
-        android:layout_below="@+id/about"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
