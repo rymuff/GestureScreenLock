@@ -100,8 +100,6 @@ public class DrawingView extends View {
             paint.setStyle(Paint.Style.STROKE);
             canvas.drawPath(path, paint);
             if (randomLine) {
-//                Paint line = new Paint(paint);
-//                line.setColor(Color.RED);
                 canvas.drawLine(start.getX(), start.getY(), stop.getX(), stop.getY(), guideLine);
             }
         }
