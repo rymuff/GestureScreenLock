@@ -11,13 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f6cc56b0-37b7-4c8b-b534-8a8b724b83f5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/ConfirmActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/ConfirmActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/DrawingView.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/DrawingView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/GestureChecker.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/GestureChecker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/Point.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/Point.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/SetupActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/kweisa/gesturescreenlock/SetupActivity.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -2434,7 +2427,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512999350817</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Update">
+      <created>1513001171359</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1513001171359</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">

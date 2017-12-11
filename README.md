@@ -1,6 +1,7 @@
 # Gesture Screen Lock
+
 Gesture Screen Loock is an Android screend lock with a gesture recognition algorithm impemented from scratch.
-This project is forked from [SLock](https://github.com/algoprog/SLock).
+Original project is [SLock](https://github.com/algoprog/SLock).
 
 # The algorithm
 
