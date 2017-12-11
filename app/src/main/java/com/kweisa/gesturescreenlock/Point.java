@@ -3,27 +3,32 @@ package com.kweisa.gesturescreenlock;
 import java.io.Serializable;
 
 public class Point implements Serializable {
-    private double x;
-    private double y;
+    private float x;
+    private float y;
 
-    Point(double x, double y) {
+    Point(float x, float y) {
         setX(x);
         setY(y);
     }
 
-    void setX(double x) {
+    Point(int x, int y) {
+        setX(x);
+        setY(y);
+    }
+
+    void setX(float x) {
         this.x = x;
     }
 
-    void setY(double y) {
+    void setY(float y) {
         this.y = y;
     }
 
-    double getX() {
+    float getX() {
         return this.x;
     }
 
-    double getY() {
+    float getY() {
         return this.y;
     }
 

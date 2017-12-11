@@ -23,8 +23,11 @@ public class ConfirmActivity extends AppCompatActivity {
 
         //noinspection unchecked
         setupGesture = (ArrayList<Point>) intent.getSerializableExtra("gesture");
+        Point start = (Point) intent.getSerializableExtra("start");
+        Point stop = (Point) intent.getSerializableExtra("stop");
 
         DrawingView drawingView = findViewById(R.id.confirm_view);
+        drawingView.printRandomLine(start, stop);
         drawingView.setOnActionUpListener(new OnActionUpListener() {
             @Override
             void onActionUp(DrawingView drawingView) {

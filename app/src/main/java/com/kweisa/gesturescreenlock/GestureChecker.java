@@ -4,7 +4,8 @@ package com.kweisa.gesturescreenlock;
 import java.util.ArrayList;
 
 class GestureChecker {
-    private static double threshold = 180;
+    @SuppressWarnings("FieldCanBeLocal")
+    private static float threshold = 180;
 
     private static ArrayList<Point> normalize(ArrayList<Point> data) {
         ArrayList<Point> pointList = new ArrayList<>();
@@ -13,21 +14,21 @@ class GestureChecker {
         int frameWidth = 1920;
         int frameHeight = 1080;
 
-        Point firstPoint = pointList.get(0);
-        double dx = firstPoint.getX();
-        double dy = firstPoint.getY();
+        Point start = pointList.get(0);
+        float dx = start.getX();
+        float dy = start.getY();
 
-        double maxX = -1;
-        double minX = frameWidth + 1;
-        double maxY = -1;
-        double minY = frameHeight + 1;
+        float maxX = -1;
+        float minX = frameWidth + 1;
+        float maxY = -1;
+        float minY = frameHeight + 1;
 
         for (Point point : pointList) {
             point.setX(point.getX() - dx);
             point.setY(point.getY() - dy);
 
-            double x = point.getX();
-            double y = point.getY();
+            float x = point.getX();
+            float y = point.getY();
 
             if (x > maxX) {
                 maxX = x;
@@ -43,19 +44,19 @@ class GestureChecker {
 
         pointList.remove(0);
 
-        double gestureWidth = Math.abs(maxX - minX);
-        double gestureHeight = Math.abs(maxY - minY);
-        double widthRatio = 1;
-        double heightRatio = 1;
+        float gestureWidth = Math.abs(maxX - minX);
+        float gestureHeight = Math.abs(maxY - minY);
+        float widthRatio = 1;
+        float heightRatio = 1;
         if (gestureWidth > 0) {
             widthRatio = frameWidth / gestureWidth;
         }
         if (gestureHeight > 0) {
             heightRatio = frameHeight / gestureHeight;
         }
-        double resizeRatio = Math.min(widthRatio, heightRatio);
+        float resizeRatio = Math.min(widthRatio, heightRatio);
 
-        ArrayList<Point> normalizedPointList = new ArrayList<Point>();
+        ArrayList<Point> normalizedPointList = new ArrayList<>();
 
         normalizedPointList.add(new Point(0, 0));
         for (Point p : pointList) {
@@ -69,8 +70,8 @@ class GestureChecker {
         ArrayList<Point> savedGesture = normalize(gesture1);
         ArrayList<Point> currentGesture = normalize(gesture2);
 
-        double distanceA = 0;
-        double distanceB = 0;
+        float distanceA = 0;
+        float distanceB = 0;
 
         for (Point a : savedGesture) {
             double minimumDistance = 9999;
@@ -92,7 +93,7 @@ class GestureChecker {
             }
             distanceB += minimumDistance;
         }
-        double averageDistance = (distanceA + distanceB) / (savedGesture.size() + currentGesture.size());
+        float averageDistance = (distanceA + distanceB) / (savedGesture.size() + currentGesture.size());
         return averageDistance < threshold;
     }
 

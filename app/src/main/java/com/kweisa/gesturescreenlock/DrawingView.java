@@ -19,8 +19,12 @@ public class DrawingView extends View {
 
     private Paint paint;
     private Path path = new Path();
+    private Paint guideLine;
     private boolean touchUp;
     private boolean showLine;
+    private boolean randomLine = false;
+    private Point start;
+    private Point stop;
 
     private OnActionUpListener onActionUpListener = null;
 
@@ -95,7 +99,30 @@ public class DrawingView extends View {
         if (showLine) {
             paint.setStyle(Paint.Style.STROKE);
             canvas.drawPath(path, paint);
+            if (randomLine) {
+//                Paint line = new Paint(paint);
+//                line.setColor(Color.RED);
+                canvas.drawLine(start.getX(), start.getY(), stop.getX(), stop.getY(), guideLine);
+            }
         }
+    }
+
+    public void printRandomLine(Point start, Point stop) {
+        randomLine = true;
+        this.start = start;
+        this.stop = stop;
+
+        guideLine = new Paint();
+        guideLine.setAntiAlias(true);
+        guideLine.setStrokeWidth(15);
+        guideLine.setStrokeJoin(Paint.Join.ROUND);
+        guideLine.setStrokeCap(Paint.Cap.ROUND);
+        guideLine.setColor(Color.RED);
+        guideLine.setStyle(Paint.Style.STROKE);
+    }
+
+    public void removeRandomLine() {
+        randomLine = false;
     }
 
     @Override
