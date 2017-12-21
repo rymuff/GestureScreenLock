@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".SetupActivity" />
         <activity android:name=".AuthActivity" />
-        <activity android:name=".ConfirmActivity"></activity>
+        <activity android:name=".ConfirmActivity" />
     </application>
 
 </manifest>

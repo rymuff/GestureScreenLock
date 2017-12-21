@@ -20,8 +20,6 @@ public class DrawingView extends View {
     private Paint paint;
     private Path path = new Path();
     private Paint guideLine;
-    private boolean touchUp;
-    private boolean showLine;
     private boolean randomLine = false;
     private Point start;
     private Point stop;
@@ -43,26 +41,10 @@ public class DrawingView extends View {
 
         pointList = new ArrayList<>();
         pointSet = new HashSet<>();
-        touchUp = false;
-        showLine = true;
-    }
-
-    public void showLine(boolean t) {
-        showLine = t;
-    }
-
-    public boolean isTouchUp() {
-        return touchUp;
     }
 
     public ArrayList<Point> getGesture() {
         return pointList;
-    }
-
-    public void reset() {
-        touchUp = false;
-        pointSet = new HashSet<>();
-        pointList = new ArrayList<>();
     }
 
     public boolean onTouch(MotionEvent event) {
@@ -82,7 +64,6 @@ public class DrawingView extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 path = new Path();
-                touchUp = true;
                 if (onActionUpListener != null)
                     onActionUpListener.onActionUp(this);
                 break;
@@ -96,12 +77,10 @@ public class DrawingView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (showLine) {
-            paint.setStyle(Paint.Style.STROKE);
-            canvas.drawPath(path, paint);
-            if (randomLine) {
-                canvas.drawLine(start.getX(), start.getY(), stop.getX(), stop.getY(), guideLine);
-            }
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawPath(path, paint);
+        if (randomLine) {
+            canvas.drawLine(start.getX(), start.getY(), stop.getX(), stop.getY(), guideLine);
         }
     }
 
@@ -117,10 +96,6 @@ public class DrawingView extends View {
         guideLine.setStrokeCap(Paint.Cap.ROUND);
         guideLine.setColor(Color.RED);
         guideLine.setStyle(Paint.Style.STROKE);
-    }
-
-    public void removeRandomLine() {
-        randomLine = false;
     }
 
     @Override

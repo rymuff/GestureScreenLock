@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Gesture Screen Lock</string>
+    <string name="draw_your_gesture">Draw your gesture</string>
+    <string name="draw_your_gesture_again">Draw your gesture again</string>
+    <string name="setup_gesture">Setup gesture</string>
+    <string name="authenticate">Authenticate</string>
 </resources>
